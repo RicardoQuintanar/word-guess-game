@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hangman</title>
+</head>
+
+<body>
+    <script>
+        // creat an array of words.
+        var bands =
+            ["Red Hot Chili Peppers",
+                "Three Day Grace",
+                "Bon Jovi",
+                "AeroSmith",
+                "50 cent",
+                "U2",
+                "Beyonce",
+                "Jay-Z",
+                "Eminem",
+                "Outkast",
+                "Miley Cyrus",
+                "Counting Crows",
+                "Eminem",
+                "John Mayer",
+                "Kanye West",
+                "Goo Goo Dolls",
+                "Green Day",
+                "Linkin Park",
+            ];
+        // pick random word from array
+        var band = bands[Math.floor(Math.random() * bands.length)];
+        // shows how many letters are in the word picked.
+        var answerArray = [];
+        for (var i = 0; i < band.length; i++) {
+            answerArray[i] = "_";
+        }
+
+        // create variable to hold tje number of remainingLetters to be guessed
+        var remainingLetters = band.length;
+
+        // ********** MAIN GAME SECTION BEGINS **************
+
+        // While there is letters to be guessed 
+        while (remainingLetters > 0) {
+            // show the player their progress
+            alert(answerArray.join("  "));
+
+            // get a guess from the player
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+
+            // if the guess is blank or clicked on cancel 
+            if(guess == null){
+                // exit the game loop
+                break;
+                // if the guess is more than one letter or no letters
+            }else if (guess.length !== 1){
+                // alert single letter only;
+                alert("Please enter a single letter.")
+            }else{
+                // update the game state with the guess
+                for (var j = 0; j < band.length; j++){
+                // if the letter they guessed is in the word 
+                // add that point or index
+                if (band[j] === guess){
+                    // update the answerArray with the letter they guessed
+                    // at that point or index
+                    anserArray[j] = guess;
+                    // subtract one from remaining letters
+                    remainingLetter--;
+
+                }
+                }
+                
+            }
+//  ***************** END OF GAME LOOP *******************
+
+
+// let player know the word 
+alert(answerArray.join("  "));
+// Congratulate the player
+alert("Good job! The answer was " + band);
+
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
