@@ -3,97 +3,80 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman</title>
-</head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- reference css -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <!-- reset css -->
+    <link rel="stylesheet" href="">
+    <!-- google fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter|Gloria+Hallelujah' rel='stylesheet' type='text/css'>
+    <!-- reference JS -->
+    <script type="text/javascript" src="./assets/JavaScript/app.js"></script>
+    </head>
 
-<body>
-    <script>
-        // creat an array of words.
-        var bands =
-            ["Red Hot Chili Peppers",
-                "Three Day Grace",
-                "Bon Jovi",
-                "AeroSmith",
-                "50 cent",
-                "U2",
-                "Beyonce",
-                "Jay-Z",
-                "Eminem",
-                "Outkast",
-                "Miley Cyrus",
-                "Counting Crows",
-                "Eminem",
-                "John Mayer",
-                "Kanye West",
-                "Goo Goo Dolls",
-                "Green Day",
-                "Linkin Park",
-            ];
-        // pick random word from array
-        var band = bands[Math.floor(Math.random() * bands.length)];
-        // shows how many letters are in the word picked.
-        var answerArray = [];
-        for (var i = 0; i < band.length; i++) {
-            answerArray[i] = "_";
-        }
-
-        // create variable to hold tje number of remainingLetters to be guessed
-        var remainingLetters = band.length;
-
-        // ********** MAIN GAME SECTION BEGINS **************
-
-        // While there is letters to be guessed 
-        while (remainingLetters > 0) {
-            // show the player their progress
-            alert(answerArray.join("  "));
-
-            // get a guess from the player
-            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
-
-            // if the guess is blank or clicked on cancel 
-            if(guess == null){
-                // exit the game loop
-                break;
-                // if the guess is more than one letter or no letters
-            }else if (guess.length !== 1){
-                // alert single letter only;
-                alert("Please enter a single letter.")
-            }else{
-                // update the game state with the guess
-                for (var j = 0; j < band.length; j++){
-                // if the letter they guessed is in the word 
-                // add that point or index
-                if (band[j] === guess){
-                    // update the answerArray with the letter they guessed
-                    // at that point or index
-                    anserArray[j] = guess;
-                    // subtract one from remaining letters
-                    remainingLetter--;
-
-                }
-                }
-                
-            }
-//  ***************** END OF GAME LOOP *******************
-
-
-// let player know the word 
-alert(answerArray.join("  "));
-// Congratulate the player
-alert("Good job! The answer was " + band);
-
-        }
-
-
-
-
-
-
-
-    </script>
-
-</body>
+    <body>
+            <div class="container">
+                <!--  header -->
+                <nav class="navbar navbar-default">
+                    <h1>Hangman</h1>
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="rules">
+                            Press Any Letter to Start.
+                            <br> Category : <span class="category"> Bands or Musicians from 2000-2010</span>
+                            <br><span id="warningMessage"></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="row ">
+                            <div class="col-md-12">
+                                <div class="col-md-5 col-sm-4">
+                                    <div id="hangman-img-holder">
+                                        <img src="" alt="hangman image" height="150" width="190" id="hangman-img">
+                                    </div>
+                                </div>
+                                <div class="col-md-7 col-sm-8 margin-top-20 ">
+                                    <div id="loadingMessage"></div>
+                                    <div id="winLose">
+                                        <div>Wins :
+                                            <sapn id="winCount"></span>
+                                        </div>
+                                        <div>Losses : <span id="loseCount"></span></div>
+                                    </div>
+                                    <div>Number of Lives Left : <span id="lives">15</span></div>
+                                    <div id="gameWord"><b>Word : &nbsp;&nbsp;<span id="word"></span></b></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- letter button -->
+                    <div class="col-md-5">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div id="letterBtn"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <footer>
+                                <div id="copyright">&copy;2019 Ricardo Quintanar</div>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </body>
 
 </html>
