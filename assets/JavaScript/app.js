@@ -4,12 +4,9 @@ var loseCount = 0;
 var timeOut;
 // creating an object with properties of bands and letters
 var hangman = {
-    words: ["RedHotChiliPeppers",
-        "ThreeDayGrace",
+    words: ["RedHotChiliPeppers", 
         "BonJovi",
         "AeroSmith",
-        "BackStreetBoys",
-        "Nsync",
         "Beyonce",
         "JayZ",
         "Eminem",
@@ -32,7 +29,7 @@ var hangman = {
         "V", "W", "X", "Y", "Z"
     ],
 
-    lives: 10,
+    lives: 11,
     userInputs: [],
     userInput: "",
     computerWord: "",
@@ -45,7 +42,7 @@ var hangman = {
     // ********** Start of the game commands ********** //
 
     init: function () {
-        this.lives = 10;
+        this.lives = 11;
         this.userInputs = [];
         this.matchedLettersCount = 0;
         this.userInput = "";
@@ -66,7 +63,7 @@ var hangman = {
         document.querySelector("#winCount").innerHTML = winCount;
         document.querySelector("#loseCount").innerHTML = loseCount;
         document.querySelector("#winLose").style.display = "inline-block";
-        document.querySelector("#hangman-img").src = "";
+        document.querySelector("#hangman-img").src = "assets/images/JACKSPARROW.png";
     },
     // HangMan Rules for user input
 
@@ -81,6 +78,7 @@ var hangman = {
         if (!this.checkInputAlreadyTried()) {
             this.disableLetterBtn();
             this.pushToTriedValues();
+
 
             if (!this.checkWordContainsUserInput()) {
                 this.printLivesLeft();
@@ -183,13 +181,13 @@ var hangman = {
     // increment win/lose by 1, play audio
     winLoseCountAndAudioOnGameEnd: function () {
         if (this.lives === 0) {
-            this.playAudio(".");
+            this.playAudio("assets/sounds/gameLost.mp3");
             loseCount++;
             this.gameOver = true;
             this.winOrLose = false;
         }
         if (this.matchedLettersCount == this.computerWordLength) {
-            this.playAudio("");
+            this.playAudio("assets/sounds/gameWon.mp3");
             winCount++;
             this.winOrLose = true;
             this.gameOver = true;
@@ -199,11 +197,13 @@ var hangman = {
     startNewOnGameOver: function () {
         if (this.gameOver === true) {
             var html = "";
-            document.querySelector("#winLose").style.display = "none"
+            document.querySelector("#winLose").style.display = "none";
+            
+            
             if (this.winOrLose) {
                 html += '<div class="message">You Won !!!</div>';
             } else {
-                html += ' <div class="message">You Lost !!!</div>'
+                html += ' <div class="message">You Lost !!!</div>';
             }
             html += '<div class="load"> New Word will load in 4 seconds.';
             html += '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>';
@@ -232,10 +232,10 @@ var hangman = {
     },
     // shows hangman images
     showHangmanImage: function () {
-        if (this.lives != 10) {
-            document.querySelector("#hangman-img").src = "" + (9 - this.lives) + ".jpg";
+        if (this.lives != 11) {
+            document.querySelector("#hangman-img").src = "assets/images/hangman-" + (10 - this.lives) + ".png";
         } else {
-            document.querySelector("#hangman-img").src = "";
+            document.querySelector("#hangman-img").src = "assets/images/JACKSPARROW.png";
         }
     },
     // when user clicks letter Buttons 
