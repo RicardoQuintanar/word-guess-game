@@ -25,6 +25,7 @@ body {
     background-repeat:no-repeat;
     background-size:cover;
     background-position:center;
+    color: whitesmoke;
 }
 
 /* content */
@@ -55,6 +56,7 @@ body {
 
 #word {
     font-size: 1.7em;
+    color: whitesmoke;
 }
 
 .category {
@@ -94,7 +96,7 @@ body {
 }
 
 .panel {
-    border: 1px solid #444;
+    border: 1px solid rgb(119, 2, 2);
     margin-right: 5px;
 }
 
