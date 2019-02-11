@@ -19,6 +19,15 @@ var hangman = {
         "GooGooDolls",
         "GreenDay",
         "LinkinPark",
+        "ThreeDaysGrace",
+        "BrittneySpears",
+        "LadyGaGa",
+        "Shakira",
+        "JustinBieber",
+        "NickleBack",
+        "RascalFlats",
+        "GeorgeStrait",
+
     ],
 
     letters: ["A", "B", "C", "D", "E",
