@@ -29,7 +29,7 @@ var hangman = {
         "V", "W", "X", "Y", "Z"
     ],
 
-    lives: 11,
+    lives: 10,
     userInputs: [],
     userInput: "",
     computerWord: "",
@@ -42,7 +42,7 @@ var hangman = {
     // ********** Start of the game commands ********** //
 
     init: function () {
-        this.lives = 11;
+        this.lives = 10;
         this.userInputs = [];
         this.matchedLettersCount = 0;
         this.userInput = "";
@@ -68,7 +68,7 @@ var hangman = {
     // HangMan Rules for user input
 
     startGame: function () {
-        if (this.gameOVer === false && this.isAlphabet()) {
+        if (this.gameOver === false && this.isAlphabet()) {
             this.checkRules();
         }
     },
@@ -99,8 +99,9 @@ var hangman = {
 
     guessAWord: function () {
         var computerRandomNumber = Math.floor(Math.random() * this.words.length);
-        return this.words[computerRandomNumber];
         console.log(this.computerWord);
+        return this.words[computerRandomNumber];
+
     },
 
     // length of word function
@@ -123,7 +124,7 @@ var hangman = {
     checkInputAlreadyTried: function () {
         if (this.userInputs.length !== 0) {
             var results = this.userInputs.indexOf(this.userInput) < 0 ? false : true;
-            return result;
+            return results;
         } else {
             return false;
         }
@@ -155,7 +156,7 @@ var hangman = {
     // replacing dashes with letters typed
     createWordWithMatchedLetters: function () {
         for (var i = 0; i < this.computerWordLength; i++) {
-            if (this.computerWord.chartAt(i).toUpperCase() == this.userInput) {
+            if (this.computerWord.charAt(i).toUpperCase() == this.userInput) {
                 if (i === 0) {
                     this.wordWithMatchedLetters = this.wordWithMatchedLetters.substring(0, i * 2) +
                         this.userInput.toUpperCase() + this.wordWithMatchedLetters.substring((i * 2 + 1));
@@ -203,13 +204,13 @@ var hangman = {
             if (this.winOrLose) {
                 html += '<div class="message">You Won !!!</div>';
             } else {
-                html += ' <div class="message">You Lost !!!</div>';
+                html += '<div class="message">You Lost !!!</div>';
             }
-            html += '<div class="load"> New Word will load in 4 seconds.';
+            html += '<div class="load">New Word will load in 6 seconds. ';
             html += '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i></div>';
 
             document.querySelector("#loadingMessage").innerHTML = html;
-            timeOut = setTimeout(this.winLoseCountAndAudioOnGameEnd.bind(this), 4000);
+            timeOut = setTimeout(this.loadGame.bind(this), 6000);
 
         }
     },
@@ -232,8 +233,8 @@ var hangman = {
     },
     // shows hangman images
     showHangmanImage: function () {
-        if (this.lives != 11) {
-            document.querySelector("#hangman-img").src = "assets/images/hangman-" + (10 - this.lives) + ".png";
+        if (this.lives != 10) {
+            document.querySelector("#hangman-img").src = "assets/images/hangman-" + (9 - this.lives) + ".png";
         } else {
             document.querySelector("#hangman-img").src = "assets/images/JACKSPARROW.png";
         }
@@ -248,7 +249,7 @@ var hangman = {
     // disables letters that user has entered
     disableLetterBtn: function () {
         var id = "#li-" + this.userInput;
-        document.querySelector(id).className = "liDisabled"
+        document.querySelector(id).className = "liDisabled";
     },
 
     // add letter buttons/key board
