@@ -8,6 +8,7 @@
     padding-bottom: 12px;
     color: #111;
     text-shadow: 2px 2px 4px #99cc00;
+    border: 1px solid orangered;
 }
 
 h1 {
@@ -20,9 +21,10 @@ h1 {
 
 body {
     line-height: 150%;
-    background: grey;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url("../images/background.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
 }
 
 /* content */
@@ -43,7 +45,7 @@ body {
 #gameWord,
 #word,
 #rules {
-    color: #ffa500;
+    color: #e09303;
 }
 
 #rules {
@@ -56,7 +58,7 @@ body {
 }
 
 .category {
-    color: #3399ff;
+    color: #053769;
 }
 
 .load {
@@ -138,6 +140,7 @@ footer {
     font-size: 11px;
     clear: both;
     position: relative;
+    border: 1px solid orangered;
 }
 
 
